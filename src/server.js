@@ -1,14 +1,5 @@
-// Reference: http://expressjs.com/
-var express = require('express')
-var app = express.createServer();
-
-var docroot = __dirname + '/../../www';
-console.log('Serving files from ' + docroot);
-app.use(express.static(docroot));
-app.use(express.errorHandler({
-	dumpExceptions : true,
-	showStack : true
-}));
+var http = require('http')
+var app = http.createServer();
 
 // Worth reading:
 // http://stackoverflow.com/questions/4445883/node-websocket-server-possible-to-have-multiple-separate-broadcasts-for-a-si

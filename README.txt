@@ -15,41 +15,10 @@ sudo apt-get install nodejs
 /***************************************************************
 * Install Dependencies
 ***************************************************************/
-== Install sockjs and express.js
-
-# https://github.com/sockjs/sockjs-node
-# http://expressjs.com/guide.html
 npm install
 
-== Install smoosh globally
-npm install smoosh -g
-
 /***************************************************************
-* BUILD
+* Run Server
 ***************************************************************/
-
-== Linux
-# This command will monitor your changes and
-# smoosh (jslint/package/mnify) the files:
-./socked.sh
-
-== Windows
-smoosh ./config.json
-
-/***************************************************************
-* SEE IT IN ACTION
-***************************************************************/
-== Startup server
-./server.sh
-
-# Open http://localhost:8080/ to check if everything is working.
-# The output is normally printed to the the dev console.
-
-# Connection + messages:
-  - http://localhost:8080/index.html
-# Filtering messages (a.k.a. interests):
-  - http://localhost:8080/interests.html
-# Mouse tracking:
-  - http://localhost:8080/mouselive/sender.html
-  - http://localhost:8080/mouselive/receiver.html
+node src/server.js
 
