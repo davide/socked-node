@@ -128,7 +128,8 @@ var getChannelHandler = function(customerData, channelName) {
 // https://github.com/sockjs/sockjs-node/blob/master/examples/test_server/sockjs_app.js
 var sockjs = require('sockjs');
 var sockjs_opts = {
-	sockjs_url : "http://cdn.sockjs.org/sockjs-0.2.min.js"
+	sockjs_url : "http://cdn.sockjs.org/sockjs-0.2.min.js",
+	websocket: false
 };
 var channelServer = sockjs.createServer(sockjs_opts);
 channelServer.on('connection', function(conn) {
