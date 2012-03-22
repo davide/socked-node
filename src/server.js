@@ -1,5 +1,9 @@
 var http = require('http')
-var app = http.createServer();
+var app = http.createServer(function(request, response) {  
+    response.writeHeader(200, {"Content-Type": "text/html"});  
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("socked-node is up!\n");
+});
 
 // Worth reading:
 // http://stackoverflow.com/questions/4445883/node-websocket-server-possible-to-have-multiple-separate-broadcasts-for-a-si
