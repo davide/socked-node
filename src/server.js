@@ -166,4 +166,4 @@ channelServer.installHandlers(app, {
 	prefix : '/sockjs'
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || process.env.VCAP_APP_PORT || 8080);
