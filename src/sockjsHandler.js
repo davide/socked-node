@@ -1,10 +1,3 @@
-var http = require('http')
-var app = http.createServer(function(request, response) {  
-    response.writeHeader(200, {"Content-Type": "text/html"});  
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("socked-node is up!\n");
-});
-
 // Worth reading:
 // http://stackoverflow.com/questions/4445883/node-websocket-server-possible-to-have-multiple-separate-broadcasts-for-a-si
 var channels = {};
@@ -124,15 +117,7 @@ var getChannelHandler = function(customerData, channelName) {
 	return channelHandlers[handlerId] || null;
 }
 
-// Reference:
-// https://github.com/sockjs/sockjs-node/blob/master/examples/test_server/sockjs_app.js
-var sockjs = require('sockjs');
-var sockjs_opts = {
-	sockjs_url : "http://cdn.sockjs.org/sockjs-0.2.min.js",
-	websocket: false
-};
-var channelServer = sockjs.createServer(sockjs_opts);
-channelServer.on('connection', function(conn) {
+exports.handle = function(conn) {
 	var customerData = null;
 	var handler = null;
 	conn.on('data', function(data) {
@@ -161,9 +146,4 @@ channelServer.on('connection', function(conn) {
 			handler.onClose(conn);
 		}
 	});
-});
-channelServer.installHandlers(app, {
-	prefix : '/sockjs'
-});
-
-app.listen(process.env.PORT || process.env.VCAP_APP_PORT || 8080);
+};
